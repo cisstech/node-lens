@@ -1,0 +1,34 @@
+{
+  "extends": "./tsconfig.base.json",
+  "compileOnSave": false,
+  "files": [],
+  "references": [
+    {
+      "path": "./packages/server"
+    },
+    {
+      "path": "./packages/cli"
+    },
+    {
+      "path": "./packages/client"
+    },
+    {
+      "path": "./packages/request"
+    },
+    {
+      "path": "./packages/database"
+    },
+    {
+      "path": "./packages/logging"
+    },
+    {
+      "path": "./packages/introspection"
+    }
+  ],
+  "ts-node": {
+    "compilerOptions": {
+      "module": "commonjs",
+      "moduleResolution": "node"
+    }
+  }
+}
