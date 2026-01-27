@@ -1,0 +1,47 @@
+{
+  "name": "@cisstech/node-lens-server",
+  "version": "0.1.0",
+  "type": "commonjs",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    "./package.json": "./package.json",
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "default": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist",
+    "!**/*.tsbuildinfo"
+  ],
+  "dependencies": {
+    "@opentelemetry/core": "^2.1.0",
+    "@opentelemetry/instrumentation": "^0.205.0",
+    "@opentelemetry/sdk-logs": "^0.205.0",
+    "@opentelemetry/sdk-metrics": "^2.1.0",
+    "@opentelemetry/sdk-trace-base": "^2.1.0",
+    "tslib": "^2.3.0"
+  },
+  "peerDependencies": {
+    "@nestjs/common": "^11.0.0",
+    "@nestjs/core": "^11.0.0",
+    "express": ">=4 <6",
+    "fastify": ">=4 <6"
+  },
+  "author": {
+    "name": "Mamadou Cisse",
+    "email": "mciissee@gmail.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cisstech/node-lens"
+  },
+  "bugs": {
+    "url": "https://github.com/cisstech/node-lens/issues"
+  },
+  "homepage": "https://github.com/cisstech/node-lens",
+  "license": "MIT"
+}
