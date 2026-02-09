@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    "outDir": "dist/server",
+    "rootDir": "src/server",
+    "declaration": true,
+    "module": "commonjs",
+    "target": "es2021",
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,
+    "types": ["node"],
+    "isolatedModules": false
+  },
+  "include": ["src/server/index.ts"],
+  "exclude": ["node_modules", "dist"]
+}
