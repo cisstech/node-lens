@@ -1,0 +1,14 @@
+{
+  "name": "node-lens-client",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "packages/client/src",
+  "projectType": "library",
+  "tags": [],
+  "targets": {
+    "serve-static": {
+      "options": {
+        "spa": false
+      }
+    }
+  }
+}

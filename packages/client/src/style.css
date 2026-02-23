@@ -1,0 +1,81 @@
+:root {
+  /* Typography */
+  --nl-font-family-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+  --nl-font-size-base: 13px;
+  --nl-line-height-base: 1.4;
+
+  /* Spacing */
+  --nl-spacing-xs: 4px;
+  --nl-spacing-sm: 8px;
+  --nl-spacing-md: 12px;
+  --nl-spacing-lg: 16px;
+  --nl-spacing-xl: 24px;
+
+  /* Border Radius */
+  --nl-border-radius: 8px;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --nl-color-primary: #f97316; /* Accent orange vif */
+    --nl-color-primary-hover: #ea580c;
+    --nl-color-success: #10b981; /* Vert vif */
+    --nl-color-success-hover: #059669;
+    --nl-color-error: #ef4444; /* Rouge vif */
+    --nl-color-error-hover: #dc2626;
+    --nl-color-warning: #eab308; /* Jaune vif */
+    --nl-color-warning-hover: #ca8a04;
+    --nl-color-info: #3b82f6; /* Bleu vif */
+    --nl-color-info-hover: #2563eb;
+
+    --nl-text-on-primary: #ffffff;
+
+    /* Surfaces & Text */
+    --nl-surface-app: #f9fafb; /* Fond plus clair, moins gris */
+    --nl-surface-control: #ffffff; /* Champs / boutons */
+    --nl-surface-raised: #ffffff; /* Cards */
+    --nl-surface-popover: #fdfdfd; /* Menus / dropdowns */
+    --nl-surface-hover: #e5e7eb; /* Hover gris bleuté */
+    --nl-surface-border: #d1d5db; /* Gris neutre VSCode-like */
+
+    --nl-shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.06);
+    --nl-shadow-md: 0 4px 6px rgba(0, 0, 0, 0.08);
+    --nl-shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.12);
+
+    --nl-text-primary: #1f2937; /* Gris anthracite */
+    --nl-text-secondary: #4b5563; /* Gris bleuté secondaire */
+    --nl-text-on-primary: #ffffff;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --nl-color-primary: #f97316; /* Même accent mais ressort bien sur fond sombre */
+    --nl-color-primary-hover: #fb923c;
+    --nl-color-success: #10b981; /* Vert vif */
+    --nl-color-success-hover: #34d399;
+    --nl-color-error: #ef4444; /* Rouge vif */
+    --nl-color-error-hover: #f87171;
+    --nl-color-warning: #eab308; /* Jaune vif */
+    --nl-color-warning-hover: #fbbf24;
+    --nl-color-info: #3b82f6; /* Bleu vif */
+    --nl-color-info-hover: #60a5fa;
+    --nl-text-on-primary: #000000;
+
+    /* Surfaces & Text */
+    --nl-surface-app: #0b0f14; /* Fond profond (bleu/noir) */
+    --nl-surface-control: #11161d; /* Inputs */
+    --nl-surface-raised: #11161d; /* Cards */
+    --nl-surface-popover: #1b2430; /* Popovers */
+    --nl-surface-hover: #2a3440; /* Hover gris bleuté */
+    --nl-surface-border: #233041; /* Gris bleuté foncé */
+
+    --nl-shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.25);
+    --nl-shadow-md: 0 4px 6px rgba(0, 0, 0, 0.35);
+    --nl-shadow-lg: 0 10px 20px rgba(0, 0, 0, 0.45);
+
+    --nl-text-primary: #e6edf3; /* Presque blanc bleuté */
+    --nl-text-secondary: #97a3af; /* Gris bleuté secondaire */
+    --nl-text-on-primary: #ffffff;
+  }
+}
