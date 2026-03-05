@@ -1,0 +1,54 @@
+{
+  "name": "node-lens-request",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "packages/request/src",
+  "projectType": "library",
+  "tags": [],
+  "targets": {
+    "build": {
+      "dependsOn": [
+        "build-server",
+        "build-client"
+      ],
+      "executor": "nx:run-commands",
+      "options": {
+        "parallel": false,
+        "commands": [
+          {
+            "command": "rm -rf packages/request/dist"
+          },
+          {
+            "command": "nx run node-lens-request:build-client"
+          },
+          {
+            "command": "nx run node-lens-request:build-server"
+          }
+        ]
+      }
+    },
+    "build-server": {
+      "executor": "nx:run-commands",
+      "outputs": [
+        "{projectRoot}/dist/src/server"
+      ],
+      "dependsOn": [
+        "^build"
+      ],
+      "options": {
+        "command": "tsc --build packages/request/tsconfig.server.json"
+      }
+    },
+    "build-client": {
+      "executor": "@nx/vite:build",
+      "outputs": [
+        "{options.outputPath}"
+      ],
+      "options": {
+        "outputPath": "packages/request/dist/src/client",
+        "configFile": "packages/request/vite.config.mts",
+        "tsConfig": "packages/request/tsconfig.client.json",
+        "generatePackageJson": false
+      }
+    }
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "experimentalDecorators": true,
+    "useDefineForClassFields": false
+  },
+  "files": [],
+  "include": [],
+  "references": [
+    {
+      "path": "../introspection"
+    },
+    {
+      "path": "../server"
+    },
+    {
+      "path": "../client"
+    },
+    {
+      "path": "./tsconfig.server.json"
+    },
+    {
+      "path": "./tsconfig.client.json"
+    }
+  ]
+}

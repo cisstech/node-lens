@@ -1,0 +1,18 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "rootDir": "src",
+    "outDir": "dist/src/client",
+    "tsBuildInfoFile": "dist/src/client/tsconfig.lib.tsbuildinfo",
+    "emitDeclarationOnly": true,
+    "module": "esnext",
+    "moduleResolution": "bundler",
+    "forceConsistentCasingInFileNames": true,
+    "types": ["vite/client"],
+    "experimentalDecorators": true,
+    "useDefineForClassFields": false
+  },
+  "include": ["src/client/**/*.ts", "src/server/types.ts"],
+  "references": [],
+  "exclude": ["jest.config.ts", "src/**/*.spec.ts", "src/**/*.test.ts"]
+}

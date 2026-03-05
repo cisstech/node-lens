@@ -1,0 +1,36 @@
+{
+  "name": "@cisstech/node-lens-request",
+  "version": "0.1.0",
+  "type": "commonjs",
+  "main": "./dist/src/server/index.js",
+  "module": "./dist/src/server/index.js",
+  "types": "./dist/src/server/index.d.ts",
+  "exports": {
+    "./package.json": "./package.json",
+    ".": {
+      "types": "./dist/src/server/index.d.ts",
+      "import": "./dist/src/server/index.js",
+      "default": "./dist/src/server/index.js"
+    }
+  },
+  "files": [
+    "dist",
+    "!**/*.tsbuildinfo"
+  ],
+  "dependencies": {
+    "js-yaml": "^4.1.0"
+  },
+  "author": {
+    "name": "Mamadou Cisse",
+    "email": "mciissee@gmail.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cisstech/node-lens"
+  },
+  "bugs": {
+    "url": "https://github.com/cisstech/node-lens/issues"
+  },
+  "homepage": "https://github.com/cisstech/node-lens",
+  "license": "MIT"
+}
