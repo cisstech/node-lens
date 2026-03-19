@@ -1,0 +1,54 @@
+{
+  "name": "node-lens-database",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "packages/database/src",
+  "projectType": "library",
+  "tags": [],
+  "targets": {
+    "build": {
+      "dependsOn": [
+        "build-server",
+        "build-client"
+      ],
+      "executor": "nx:run-commands",
+      "options": {
+        "parallel": false,
+        "commands": [
+          {
+            "command": "rm -rf packages/database/dist"
+          },
+          {
+            "command": "nx run node-lens-database:build-client"
+          },
+          {
+            "command": "nx run node-lens-database:build-server"
+          }
+        ]
+      }
+    },
+    "build-server": {
+      "executor": "nx:run-commands",
+      "outputs": [
+        "{projectRoot}/dist/src/server"
+      ],
+      "dependsOn": [
+        "^build"
+      ],
+      "options": {
+        "command": "tsc --build packages/database/tsconfig.server.json"
+      }
+    },
+    "build-client": {
+      "executor": "@nx/vite:build",
+      "outputs": [
+        "{options.outputPath}"
+      ],
+      "options": {
+        "outputPath": "packages/database/dist/src/client",
+        "configFile": "packages/database/vite.config.mts",
+        "tsConfig": "packages/database/tsconfig.client.json",
+        "generatePackageJson": false
+      }
+    }
+  }
+}
