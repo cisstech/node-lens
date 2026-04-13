@@ -1,0 +1,54 @@
+{
+  "name": "node-lens-introspection",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "packages/introspection/src",
+  "projectType": "library",
+  "tags": [],
+  "targets": {
+    "build": {
+      "dependsOn": [
+        "build-server",
+        "build-client"
+      ],
+      "executor": "nx:run-commands",
+      "options": {
+        "parallel": false,
+        "commands": [
+          {
+            "command": "rm -rf packages/introspection/dist"
+          },
+          {
+            "command": "nx run node-lens-introspection:build-client"
+          },
+          {
+            "command": "nx run node-lens-introspection:build-server"
+          }
+        ]
+      }
+    },
+    "build-server": {
+      "executor": "nx:run-commands",
+      "outputs": [
+        "{projectRoot}/dist/src/server"
+      ],
+      "dependsOn": [
+        "^build"
+      ],
+      "options": {
+        "command": "tsc --build packages/introspection/tsconfig.server.json"
+      }
+    },
+    "build-client": {
+      "executor": "@nx/vite:build",
+      "outputs": [
+        "{options.outputPath}"
+      ],
+      "options": {
+        "outputPath": "packages/introspection/dist/src/client",
+        "configFile": "packages/introspection/vite.config.mts",
+        "tsConfig": "packages/introspection/tsconfig.client.json",
+        "generatePackageJson": false
+      }
+    }
+  }
+}

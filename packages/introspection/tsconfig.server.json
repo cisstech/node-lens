@@ -1,0 +1,17 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "rootDir": "src/server",
+    "outDir": "dist/src/server",
+    "module": "nodenext",
+    "moduleResolution": "nodenext",
+    "tsBuildInfoFile": "dist/src/server/tsconfig.lib.tsbuildinfo",
+    "emitDeclarationOnly": false,
+    "emitDecoratorMetadata": true,
+    "forceConsistentCasingInFileNames": true,
+    "types": ["node", "reflect-metadata"],
+  },
+  "include": ["src/server/**/*.ts"],
+  "references": [],
+  "exclude": ["jest.config.ts", "src/**/*.spec.ts", "src/**/*.test.ts"]
+}
