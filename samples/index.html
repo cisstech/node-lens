@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo App</title>
+    <style>
+        body { font-family: sans-serif; margin: 2em; display: flex; justify-content: center; }
+        .app-section { border: 1px solid #ccc; padding: 1em; border-radius: 5px; width: 400px; }
+        h1 { text-align: center; }
+        ul { list-style-type: none; padding: 0; }
+        li { display: flex; justify-content: space-between; align-items: center; padding: 0.5em 0; }
+        li.completed { text-decoration: line-through; color: #888; }
+        .task-input { width: 70%; }
+        .add-btn { width: 25%; }
+    </style>
+</head>
+<body>
+    <div class="app-section">
+        <h1>Todo App</h1>
+        <form id="todo-form">
+            <input type="text" id="task-input" class="task-input" placeholder="New task" required>
+            <button type="submit" class="add-btn">Add</button>
+        </form>
+        <ul id="todo-list"></ul>
+    </div>
+
+    <script>
+        const baseUrl = 'http://localhost:3000';
+        const form = document.getElementById('todo-form');
+        const taskInput = document.getElementById('task-input');
+        const list = document.getElementById('todo-list');
+
+        async function fetchTodos() {
+            try {
+                const response = await fetch(`${baseUrl}/todos`);
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                const todos = await response.json();
+                list.innerHTML = '';
+                todos.forEach(todo => {
+                    const li = document.createElement('li');
+                    li.textContent = todo.task;
+                    if (todo.completed) {
+                        li.classList.add('completed');
+                    }
+
+                    const toggleBtn = document.createElement('button');
+                    toggleBtn.textContent = 'Toggle';
+                    toggleBtn.onclick = () => toggleTodo(todo.id || todo._id, !todo.completed);
+
+                    const deleteBtn = document.createElement('button');
+                    deleteBtn.textContent = 'Delete';
+                    deleteBtn.onclick = () => deleteTodo(todo.id || todo._id);
+
+                    const controls = document.createElement('div');
+                    controls.appendChild(toggleBtn);
+                    controls.appendChild(deleteBtn);
+                    li.appendChild(controls);
+
+                    list.appendChild(li);
+                });
+            } catch (error) {
+                console.error("Failed to fetch todos:", error);
+                list.innerHTML = '<li>Failed to load todos. Is the server running?</li>';
+            }
+        }
+
+        async function addTodo(e) {
+            e.preventDefault();
+            const task = taskInput.value;
+            await fetch(`${baseUrl}/todos`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ task })
+            });
+            taskInput.value = '';
+            fetchTodos();
+        }
+
+        async function toggleTodo(id, completed) {
+            await fetch(`${baseUrl}/todos/${id}`, {
+                method: 'PUT',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ completed })
+            });
+            fetchTodos();
+        }
+
+        async function deleteTodo(id) {
+            await fetch(`${baseUrl}/todos/${id}`, {
+                method: 'DELETE'
+            });
+            fetchTodos();
+        }
+
+        form.addEventListener('submit', addTodo);
+        fetchTodos();
+    </script>
+</body>
+</html>
