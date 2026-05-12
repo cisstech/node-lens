@@ -1,6 +1,7 @@
 import { program } from 'commander'
 //import { createPluginCommand } from './lib/commands/create-plugin'
 import { createMonitorCommand } from './lib/commands/monitor'
+import { createMcpCommand } from './lib/commands/mcp'
 import { getPackageInfo } from './lib/utils/package-info'
 
 async function main() {
@@ -10,6 +11,7 @@ async function main() {
 
   program
   .addCommand(createMonitorCommand())
+  .addCommand(createMcpCommand())
   //.addCommand(createPluginCommand)
 
   // Parse command line arguments
