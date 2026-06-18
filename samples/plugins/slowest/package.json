@@ -1,0 +1,8 @@
+{
+  "name": "node-lens-example-slowest",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Reference NodeLens plugin (no build step) — top slowest HTTP endpoints",
+  "main": "dist/src/server/index.js",
+  "type": "commonjs"
+}
