@@ -1414,7 +1414,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@cisstech/node-lens-cli@workspace:packages/cli"
   dependencies:
-    "@cisstech/node-lens-server": "npm:0.0.1"
+    "@cisstech/node-lens-server": "npm:^0.1.0"
     "@opentelemetry/resources": "npm:^2.1.0"
     "@opentelemetry/sdk-logs": "npm:^0.205.0"
     "@opentelemetry/sdk-metrics": "npm:^2.1.0"
@@ -1433,7 +1433,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@cisstech/node-lens-client@workspace:packages/client"
   dependencies:
-    "@cisstech/node-lens-server": "npm:0.0.1"
+    "@cisstech/node-lens-server": "npm:^0.1.0"
     codemirror: "npm:^5.65.16"
     lit: "npm:^3.3.1"
   languageName: unknown
@@ -1498,11 +1498,11 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@cisstech/node-lens-request@workspace:packages/request"
   dependencies:
-    js-yaml: "npm:^4.1.0"
+    js-yaml: "npm:^4.2.0"
   languageName: unknown
   linkType: soft
 
-"@cisstech/node-lens-server@npm:0.0.1, @cisstech/node-lens-server@workspace:packages/server":
+"@cisstech/node-lens-server@npm:^0.1.0, @cisstech/node-lens-server@workspace:packages/server":
   version: 0.0.0-use.local
   resolution: "@cisstech/node-lens-server@workspace:packages/server"
   dependencies:
@@ -1581,7 +1581,7 @@ __metadata:
     jest-environment-node: "npm:^30.0.2"
     jest-util: "npm:^30.0.2"
     jiti: "npm:2.4.2"
-    js-yaml: "npm:^4.1.0"
+    js-yaml: "npm:^4.2.0"
     jsdom: "npm:~22.1.0"
     jsonc-eslint-parser: "npm:^2.1.0"
     lit: "npm:^3.3.1"
@@ -11650,6 +11650,17 @@ __metadata:
   bin:
     js-yaml: bin/js-yaml.js
   checksum: 10c0/6746baaaeac312c4db8e75fa22331d9a04cccb7792d126ed8ce6a0bbcfef0cedaddd0c5098fade53db067c09fe00aa1c957674b4765610a8b06a5a189e46433b
+  languageName: node
+  linkType: hard
+
+"js-yaml@npm:^4.2.0":
+  version: 4.2.0
+  resolution: "js-yaml@npm:4.2.0"
+  dependencies:
+    argparse: "npm:^2.0.1"
+  bin:
+    js-yaml: bin/js-yaml.js
+  checksum: 10c0/1916456c118746603b067d74bbcbb0445d9a1d5e474ad4ae775e7b20525bed902e01d9d97dd0c81fcd8d4f596162309d0eb057f4aa38f3e9647f14075e9dea45
   languageName: node
   linkType: hard
 
