@@ -11,6 +11,6 @@
     "types": ["node"]
   },
   "include": ["src/server/**/*.ts"],
-  "references": [{ "path": "../server/tsconfig.lib.json" }],
+  "references": [],
   "exclude": ["jest.config.ts", "src/**/*.spec.ts", "src/**/*.test.ts"]
 }

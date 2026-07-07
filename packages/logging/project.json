@@ -6,24 +6,13 @@
   "tags": [],
   "targets": {
     "build": {
+      "executor": "nx:run-commands",
       "dependsOn": [
         "build-server",
         "build-client"
       ],
-      "executor": "nx:run-commands",
       "options": {
-        "parallel": false,
-        "commands": [
-          {
-            "command": "rm -rf packages/logging/dist"
-          },
-          {
-            "command": "nx run node-lens-logging:build-client"
-          },
-          {
-            "command": "nx run node-lens-logging:build-server"
-          }
-        ]
+        "command": "echo built node-lens-logging"
       }
     },
     "build-server": {

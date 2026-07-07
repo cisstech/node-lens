@@ -6,24 +6,13 @@
   "tags": [],
   "targets": {
     "build": {
+      "executor": "nx:run-commands",
       "dependsOn": [
         "build-server",
         "build-client"
       ],
-      "executor": "nx:run-commands",
       "options": {
-        "parallel": false,
-        "commands": [
-          {
-            "command": "rm -rf packages/database/dist"
-          },
-          {
-            "command": "nx run node-lens-database:build-client"
-          },
-          {
-            "command": "nx run node-lens-database:build-server"
-          }
-        ]
+        "command": "echo built node-lens-database"
       }
     },
     "build-server": {
