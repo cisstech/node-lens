@@ -1414,7 +1414,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@cisstech/node-lens-cli@workspace:packages/cli"
   dependencies:
-    "@cisstech/node-lens-server": "npm:0.0.1"
+    "@cisstech/node-lens-server": "npm:^0.1.0"
     "@opentelemetry/resources": "npm:^2.1.0"
     "@opentelemetry/sdk-logs": "npm:^0.205.0"
     "@opentelemetry/sdk-metrics": "npm:^2.1.0"
@@ -1433,7 +1433,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@cisstech/node-lens-client@workspace:packages/client"
   dependencies:
-    "@cisstech/node-lens-server": "npm:0.0.1"
+    "@cisstech/node-lens-server": "npm:^0.1.0"
     codemirror: "npm:^5.65.16"
     lit: "npm:^3.3.1"
   languageName: unknown
@@ -1502,7 +1502,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@cisstech/node-lens-server@npm:0.0.1, @cisstech/node-lens-server@workspace:packages/server":
+"@cisstech/node-lens-server@npm:^0.1.0, @cisstech/node-lens-server@workspace:packages/server":
   version: 0.0.0-use.local
   resolution: "@cisstech/node-lens-server@workspace:packages/server"
   dependencies:
@@ -12715,6 +12715,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"minizlib@npm:^3.1.0":
+  version: 3.1.0
+  resolution: "minizlib@npm:3.1.0"
+  dependencies:
+    minipass: "npm:^7.1.2"
+  checksum: 10c0/5aad75ab0090b8266069c9aabe582c021ae53eb33c6c691054a13a45db3b4f91a7fb1bd79151e6b4e9e9a86727b522527c0a06ec7d45206b745d54cd3097bcec
+  languageName: node
+  linkType: hard
+
 "mkdirp@npm:1.0.4":
   version: 1.0.4
   resolution: "mkdirp@npm:1.0.4"
@@ -12732,15 +12741,6 @@ __metadata:
   bin:
     mkdirp: bin/cmd.js
   checksum: 10c0/e2e2be789218807b58abced04e7b49851d9e46e88a2f9539242cc8a92c9b5c3a0b9bab360bd3014e02a140fc4fbc58e31176c408b493f8a2a6f4986bd7527b01
-  languageName: node
-  linkType: hard
-
-"mkdirp@npm:^3.0.1":
-  version: 3.0.1
-  resolution: "mkdirp@npm:3.0.1"
-  bin:
-    mkdirp: dist/cjs/src/bin.js
-  checksum: 10c0/9f2b975e9246351f5e3a40dcfac99fcd0baa31fbfab615fe059fb11e51f10e4803c63de1f384c54d656e4db31d000e4767e9ef076a22e12a641357602e31d57d
   languageName: node
   linkType: hard
 
@@ -15679,16 +15679,15 @@ __metadata:
   linkType: hard
 
 "tar@npm:^7.4.3":
-  version: 7.4.3
-  resolution: "tar@npm:7.4.3"
+  version: 7.5.19
+  resolution: "tar@npm:7.5.19"
   dependencies:
     "@isaacs/fs-minipass": "npm:^4.0.0"
     chownr: "npm:^3.0.0"
     minipass: "npm:^7.1.2"
-    minizlib: "npm:^3.0.1"
-    mkdirp: "npm:^3.0.1"
+    minizlib: "npm:^3.1.0"
     yallist: "npm:^5.0.0"
-  checksum: 10c0/d4679609bb2a9b48eeaf84632b6d844128d2412b95b6de07d53d8ee8baf4ca0857c9331dfa510390a0727b550fd543d4d1a10995ad86cdf078423fbb8d99831d
+  checksum: 10c0/7022e8cb04a8ceccc0689f2c731743fa2aab2e3c3f559f7dbc37b65ef7d5913049b427284eded2ec0765c5db5ff72dd7939fe2ae15785ff422cef2116c95d798
   languageName: node
   linkType: hard
 
