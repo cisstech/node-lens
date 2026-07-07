@@ -29,13 +29,23 @@ the app *does*, not just what the code *says*.
 
 ## Quick start
 
-Install the CLI:
+NodeLens is a local dev tool, so install it as dev dependencies: the `nls` CLI
+plus the plugins for what you want to see. The CLI brings the core server and
+the dashboard with it, so this is everything you need.
 
 ```bash
-npm install -g @cisstech/node-lens-cli
+# npm
+npm install -D @cisstech/node-lens-cli @cisstech/node-lens-request @cisstech/node-lens-database @cisstech/node-lens-logging
+
+# yarn
+yarn add -D @cisstech/node-lens-cli @cisstech/node-lens-request @cisstech/node-lens-database @cisstech/node-lens-logging
 ```
 
-Add a `nodelens.config.js` to your project root, listing the plugins you want:
+On a NestJS app, add `@cisstech/node-lens-introspection` for a module, provider,
+and route view.
+
+Add a `nodelens.config.js` at your project root, listing the plugins you
+installed:
 
 ```javascript
 const { createNodeLens } = require('@cisstech/node-lens-server')
@@ -55,14 +65,31 @@ your app and not to the `npm`/`yarn`/`nx` process that may launch it:
 process.env.NODE_LENS_MONITOR = 'true'
 ```
 
-Start your app through the `nls` CLI:
+Because the CLI is a local install, run it through your package runner: `npx`
+for npm or pnpm, `yarn` for Yarn.
 
 ```bash
-nls monitor --mode backend node app.js     # or: npm start, nx serve api, …
+npx nls monitor --mode backend node app.js     # or: npm start, nx serve api, ...
+# yarn: yarn nls monitor --mode backend node app.js
 ```
 
-The CLI prints the dashboard URL once your app starts listening. By default that
-is `http://localhost:<your-app-port>/node-lens/assets/`.
+The CLI prints the dashboard URL once your app starts listening, by default
+`http://localhost:<your-app-port>/node-lens/assets/`. Open it in a browser and
+requests, queries, and logs stream in live.
+
+### Watch it inside your frontend
+
+`--mode frontend` injects the same dashboard as an overlay into a running
+frontend dev server (Vite, `ng serve`, `next dev`, and the like), so you read it
+from within your own app instead of a separate page. Start your backend in
+`--mode backend` first (it opens the session the overlay reads from), then run
+the frontend under NodeLens:
+
+```bash
+npx nls monitor --mode frontend npm run dev    # or: nx serve app, vite, ng serve, ...
+```
+
+Toggle the panel from inside your app with `Ctrl/Cmd` + `Shift` + `L`.
 
 Want to see it before wiring up your own app? The [blog sample](samples/blog/)
 runs a small app with intentional N+1s and slow queries to explore.
@@ -74,7 +101,7 @@ session's runtime data (recent requests, N+1 findings, slow queries, correlated
 logs) to agents like Claude Code and Cursor. Everything stays local.
 
 ```bash
-nls mcp
+npx nls mcp     # yarn: yarn nls mcp
 ```
 
 The [MCP guide](docs/MCP.md) has a 60-second local test and the agent config.

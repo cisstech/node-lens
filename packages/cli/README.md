@@ -1,13 +1,16 @@
 # @cisstech/node-lens-cli
 
 The `nls` command. It runs your app with NodeLens attached and serves the MCP
-server for AI agents. Install it globally:
+server for AI agents. It is a local dev tool, so install it as a dev dependency
+alongside the core server and the dashboard, which it pulls in for you:
 
 ```bash
-npm install -g @cisstech/node-lens-cli
+npm install -D @cisstech/node-lens-cli     # yarn: yarn add -D @cisstech/node-lens-cli
 ```
 
-See the [root README](../../README.md) for the full quick start.
+Run it through your package runner (`npx` for npm or pnpm, `yarn` for Yarn) so it
+resolves the local install. See the [root README](../../README.md) for the full
+quick start, including which plugins to add.
 
 ## `nls monitor`
 
@@ -15,9 +18,9 @@ Starts your app with the OpenTelemetry SDK and NodeLens loaded, then prints the
 dashboard URL once the app is listening.
 
 ```bash
-nls monitor --mode backend node app.js
-nls monitor --mode backend npm start
-nls monitor --mode frontend npm run dev    # inject the dashboard into a dev server
+npx nls monitor --mode backend node app.js
+npx nls monitor --mode backend npm start
+npx nls monitor --mode frontend npm run dev    # inject the dashboard into a dev server
 ```
 
 | Option | Purpose |
@@ -37,7 +40,7 @@ gives an AI agent read-only access to the running session's data. See the
 [MCP guide](../../docs/MCP.md).
 
 ```bash
-nls mcp [--cwd <path>]
+npx nls mcp [--cwd <path>]
 ```
 
 `--cwd` (or `$NODE_LENS_CWD`) sets where to look for the session; otherwise it

@@ -164,6 +164,6 @@ const { SlowestPlugin } = require('@you/node-lens-slowest')
 module.exports = createNodeLens({ plugins: [new SlowestPlugin()] })
 ```
 
-Start `nls monitor …`; your tab appears in the dashboard, and (if your plugin
+Start `npx nls monitor ...`; your tab appears in the dashboard, and (if your plugin
 emits useful runtime signals) the data is also queryable by AI agents through
 [`nls mcp`](./MCP.md).
