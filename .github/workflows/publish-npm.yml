@@ -1,0 +1,52 @@
+name: Publish to npm
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Version bump'
+        required: true
+        default: 'patch'
+        type: choice
+        options:
+          - patch
+          - minor
+          - major
+          - current
+
+env:
+  NODE_VERSION: 22
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      id-token: write
+    steps:
+      - uses: DerYeger/yarn-setup-action@master
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+
+      - name: Configure git
+        run: |
+          git config --global user.name "${{ github.actor }}"
+          git config --global user.email "${{ github.actor }}@users.noreply.github.com"
+
+      - name: Version and changelog
+        if: inputs.version != 'current'
+        run: yarn release:${{ inputs.version }}
+
+      - name: Push tags
+        if: inputs.version != 'current'
+        run: git push --follow-tags origin main
+
+      - name: Build
+        run: npx nx run-many -t build
+
+      - name: Publish
+        run: |
+          echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" > ~/.npmrc
+          ./scripts/publish.sh
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_PUBLIC_TOKEN }}
