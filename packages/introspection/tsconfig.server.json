@@ -9,9 +9,9 @@
     "emitDeclarationOnly": false,
     "emitDecoratorMetadata": true,
     "forceConsistentCasingInFileNames": true,
-    "types": ["node", "reflect-metadata"],
+    "types": ["node", "reflect-metadata"]
   },
   "include": ["src/server/**/*.ts"],
-  "references": [],
+  "references": [{ "path": "../server/tsconfig.lib.json" }],
   "exclude": ["jest.config.ts", "src/**/*.spec.ts", "src/**/*.test.ts"]
 }
