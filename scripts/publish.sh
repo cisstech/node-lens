@@ -5,6 +5,13 @@ set -euo pipefail
 
 node ./scripts/sync-versions.mjs
 
+# Provenance needs a supported CI's OIDC token, so only request it on CI. This
+# lets the same script publish locally as a fallback.
+provenance=""
+if [ "${CI:-}" = "true" ]; then
+  provenance="--provenance"
+fi
+
 for dir in packages/*/; do
   pkg="${dir}package.json"
   [ -f "$pkg" ] || continue
@@ -17,5 +24,5 @@ for dir in packages/*/; do
 
   cp -f LICENSE "${dir}LICENSE"
   echo "publishing ${dir}"
-  (cd "$dir" && npm publish --access public --provenance)
+  (cd "$dir" && npm publish --access public ${provenance})
 done
