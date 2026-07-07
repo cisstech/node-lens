@@ -21,8 +21,9 @@ jobs:
   publish:
     runs-on: ubuntu-latest
     permissions:
-      contents: write
-      id-token: write
+      contents: write # push the release branch and create the GitHub release
+      id-token: write # npm provenance via OIDC
+      pull-requests: write # open the release PR back into main
     steps:
       - uses: DerYeger/yarn-setup-action@master
         with:
@@ -33,20 +34,38 @@ jobs:
           git config --global user.name "${{ github.actor }}"
           git config --global user.email "${{ github.actor }}@users.noreply.github.com"
 
+      # main is protected and the Actions bot cannot push to it, so the version
+      # bump lands on a release branch and returns to main through a pull request.
       - name: Version and changelog
         if: inputs.version != 'current'
-        run: yarn release:${{ inputs.version }}
-
-      - name: Push tags
-        if: inputs.version != 'current'
-        run: git push --follow-tags origin main
+        id: version
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          tag=$(npm version ${{ inputs.version }} --no-git-tag-version)
+          echo "tag=${tag}" >> "$GITHUB_OUTPUT"
+          git checkout -b "release/${tag}"
+          npx standard-version --skip.bump --skip.commit --skip.tag
+          git add package.json CHANGELOG.md
+          git commit -m "chore(release): ${tag}"
+          git tag "${tag}"
+          git push --follow-tags origin "release/${tag}"
+          gh pr create --base main --head "release/${tag}" \
+            --title "chore(release): ${tag}" \
+            --body "Version bump and changelog for ${tag}. Safe to merge once the npm publish in this run has succeeded."
 
       - name: Build
         run: npx nx run-many -t build
 
-      - name: Publish
+      - name: Publish to npm
         run: |
           echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" > ~/.npmrc
           ./scripts/publish.sh
         env:
           NPM_TOKEN: ${{ secrets.NPM_PUBLIC_TOKEN }}
+
+      - name: GitHub release
+        if: inputs.version != 'current'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: gh release create "${{ steps.version.outputs.tag }}" --title "${{ steps.version.outputs.tag }}" --generate-notes
