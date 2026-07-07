@@ -90,7 +90,7 @@
     "@opentelemetry/resources": "^2.1.0",
     "@opentelemetry/sdk-logs": "^0.205.0",
     "@opentelemetry/sdk-metrics": "^2.1.0",
-    "@opentelemetry/sdk-node": "^0.205.0",
+    "@opentelemetry/sdk-node": "^0.217.0",
     "@opentelemetry/sdk-trace-base": "^2.1.0",
     "@opentelemetry/semantic-conventions": "^1.37.0",
     "@vscode/codicons": "^0.0.40",
