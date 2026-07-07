@@ -17,6 +17,9 @@
     "dist",
     "!**/*.tsbuildinfo"
   ],
+  "peerDependencies": {
+    "@cisstech/node-lens-server": "^0.1.0"
+  },
   "author": {
     "name": "Mamadou Cisse",
     "email": "mciissee@gmail.com"

@@ -1427,6 +1427,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@cisstech/node-lens-cli@workspace:packages/cli"
   dependencies:
+    "@cisstech/node-lens-client": "npm:^0.1.0"
     "@cisstech/node-lens-server": "npm:^0.1.0"
     "@opentelemetry/resources": "npm:^2.1.0"
     "@opentelemetry/sdk-logs": "npm:^0.205.0"
@@ -1442,7 +1443,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@cisstech/node-lens-client@workspace:packages/client":
+"@cisstech/node-lens-client@npm:^0.1.0, @cisstech/node-lens-client@workspace:packages/client":
   version: 0.0.0-use.local
   resolution: "@cisstech/node-lens-client@workspace:packages/client"
   dependencies:
@@ -1462,6 +1463,7 @@ __metadata:
     redis: "npm:^4.6.0"
     sql-formatter: "npm:^15.6.9"
   peerDependencies:
+    "@cisstech/node-lens-server": ^0.1.0
     mongodb: ^6.0.0
     mysql2: ^3.6.0
     pg: ^8.11.0
@@ -1494,6 +1496,7 @@ __metadata:
     lit: "npm:^3.3.1"
     reflect-metadata: "npm:^0.1.0"
   peerDependencies:
+    "@cisstech/node-lens-server": ^0.1.0
     "@nestjs/common": ^11.0.0
     "@nestjs/core": ^11.0.0
     express: ">=4 <6"
@@ -1504,6 +1507,8 @@ __metadata:
 "@cisstech/node-lens-logging@workspace:packages/logging":
   version: 0.0.0-use.local
   resolution: "@cisstech/node-lens-logging@workspace:packages/logging"
+  peerDependencies:
+    "@cisstech/node-lens-server": ^0.1.0
   languageName: unknown
   linkType: soft
 
@@ -1512,6 +1517,8 @@ __metadata:
   resolution: "@cisstech/node-lens-request@workspace:packages/request"
   dependencies:
     js-yaml: "npm:^4.1.0"
+  peerDependencies:
+    "@cisstech/node-lens-server": ^0.1.0
   languageName: unknown
   linkType: soft
 

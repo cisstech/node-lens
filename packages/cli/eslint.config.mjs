@@ -14,6 +14,9 @@ export default [
         'error',
         {
           ignoredFiles: ['{projectRoot}/eslint.config.{js,cjs,mjs,ts,cts,mts}'],
+          // The CLI ships the dashboard so a single install is enough; the server
+          // serves it by reading its dist from disk, so nothing imports it here.
+          ignoredDependencies: ['@cisstech/node-lens-client'],
         },
       ],
     },

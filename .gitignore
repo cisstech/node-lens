@@ -55,5 +55,12 @@ vite.config.*.timestamp*
 vitest.config.*.timestamp*
 
 storybook-static
+
+# Yarn regenerates this on every install
+.yarn/install-state.gz
+
+# LICENSE copied into each package by scripts/publish.sh at publish time
+packages/*/LICENSE
+
 # Local Claude Code config
 .claude

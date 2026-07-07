@@ -23,6 +23,7 @@
     "!**/*.tsbuildinfo"
   ],
   "dependencies": {
+    "@cisstech/node-lens-client": "^0.1.0",
     "@cisstech/node-lens-server": "^0.1.0",
     "@opentelemetry/resources": "^2.1.0",
     "@opentelemetry/sdk-logs": "^0.205.0",
