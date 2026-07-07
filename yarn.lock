@@ -1414,7 +1414,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@cisstech/node-lens-cli@workspace:packages/cli"
   dependencies:
-    "@cisstech/node-lens-server": "npm:0.0.1"
+    "@cisstech/node-lens-server": "npm:^0.1.0"
     "@opentelemetry/resources": "npm:^2.1.0"
     "@opentelemetry/sdk-logs": "npm:^0.205.0"
     "@opentelemetry/sdk-metrics": "npm:^2.1.0"
@@ -1433,7 +1433,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@cisstech/node-lens-client@workspace:packages/client"
   dependencies:
-    "@cisstech/node-lens-server": "npm:0.0.1"
+    "@cisstech/node-lens-server": "npm:^0.1.0"
     codemirror: "npm:^5.65.16"
     lit: "npm:^3.3.1"
   languageName: unknown
@@ -1502,11 +1502,11 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@cisstech/node-lens-server@npm:0.0.1, @cisstech/node-lens-server@workspace:packages/server":
+"@cisstech/node-lens-server@npm:^0.1.0, @cisstech/node-lens-server@workspace:packages/server":
   version: 0.0.0-use.local
   resolution: "@cisstech/node-lens-server@workspace:packages/server"
   dependencies:
-    "@opentelemetry/core": "npm:^2.1.0"
+    "@opentelemetry/core": "npm:^2.8.0"
     "@opentelemetry/instrumentation": "npm:^0.205.0"
     "@opentelemetry/sdk-logs": "npm:^0.205.0"
     "@opentelemetry/sdk-metrics": "npm:^2.1.0"
@@ -1542,7 +1542,7 @@ __metadata:
     "@opentelemetry/api": "npm:^1.9.0"
     "@opentelemetry/api-logs": "npm:^0.205.0"
     "@opentelemetry/auto-instrumentations-node": "npm:^0.64.1"
-    "@opentelemetry/core": "npm:^2.1.0"
+    "@opentelemetry/core": "npm:^2.8.0"
     "@opentelemetry/instrumentation": "npm:^0.205.0"
     "@opentelemetry/resources": "npm:^2.1.0"
     "@opentelemetry/sdk-logs": "npm:^0.205.0"
@@ -3518,7 +3518,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@opentelemetry/core@npm:2.1.0, @opentelemetry/core@npm:^2.0.0, @opentelemetry/core@npm:^2.1.0":
+"@opentelemetry/core@npm:2.1.0, @opentelemetry/core@npm:^2.0.0":
   version: 2.1.0
   resolution: "@opentelemetry/core@npm:2.1.0"
   dependencies:
@@ -3526,6 +3526,17 @@ __metadata:
   peerDependencies:
     "@opentelemetry/api": ">=1.0.0 <1.10.0"
   checksum: 10c0/562c44c89150ef9cc7be4fcbfccfb62f71eb95d487de79b6a2716bb960da7d181f5e2ae3354ed6bd0bba0a3903fe5b7dad14b9a4a92fa90ab1b9172f11a3743d
+  languageName: node
+  linkType: hard
+
+"@opentelemetry/core@npm:^2.8.0":
+  version: 2.8.0
+  resolution: "@opentelemetry/core@npm:2.8.0"
+  dependencies:
+    "@opentelemetry/semantic-conventions": "npm:^1.29.0"
+  peerDependencies:
+    "@opentelemetry/api": ">=1.0.0 <1.10.0"
+  checksum: 10c0/35b8a464b359a0699fcbcea8c11a883f0f634ee7638719b89fa0c0cbbaaa38c57db22e9ac19ffb15ce18014751dc7db11a26d7fb6ad6259f89a26bdc4d167e4b
   languageName: node
   linkType: hard
 
