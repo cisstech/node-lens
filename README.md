@@ -1,5 +1,10 @@
 # NodeLens
 
+[![CI](https://github.com/cisstech/node-lens/actions/workflows/ci.yml/badge.svg)](https://github.com/cisstech/node-lens/actions/workflows/ci.yml)
+[![npm](https://img.shields.io/npm/v/@cisstech/node-lens-cli.svg)](https://www.npmjs.com/package/@cisstech/node-lens-cli)
+[![license](https://img.shields.io/github/license/cisstech/node-lens)](https://github.com/cisstech/node-lens/blob/main/LICENSE)
+[![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg)](https://github.com/prettier/prettier)
+
 NodeLens shows you what your Node.js app actually does at runtime: every HTTP
 request, database query, and log line, correlated, while it runs on your
 machine. You start your app through one command and open a local dashboard.
@@ -84,14 +89,14 @@ other pages in your browser can't read your traffic.
 
 ## Packages
 
-| Package | What it does |
-|---------|--------------|
-| [`@cisstech/node-lens-cli`](packages/cli) | The `nls` CLI: runs your app under monitoring and serves the MCP server. |
-| [`@cisstech/node-lens-server`](packages/server) | Core: the OpenTelemetry bridge, event store, and plugin API. |
-| [`@cisstech/node-lens-request`](packages/request) | HTTP requests, timelines, and a request playground. |
-| [`@cisstech/node-lens-database`](packages/database) | Database queries, N+1 detection, and a query playground. |
-| [`@cisstech/node-lens-logging`](packages/logging) | Logs correlated to requests. |
-| [`@cisstech/node-lens-introspection`](packages/introspection) | NestJS modules, providers, and routes (NestJS apps only). |
+| Package | What it does | Version |
+|---------|--------------|---------|
+| [`@cisstech/node-lens-cli`](packages/cli) | The `nls` CLI: runs your app under monitoring and serves the MCP server. | [![npm](https://img.shields.io/npm/v/@cisstech/node-lens-cli.svg)](https://www.npmjs.com/package/@cisstech/node-lens-cli) |
+| [`@cisstech/node-lens-server`](packages/server) | Core: the OpenTelemetry bridge, event store, and plugin API. | [![npm](https://img.shields.io/npm/v/@cisstech/node-lens-server.svg)](https://www.npmjs.com/package/@cisstech/node-lens-server) |
+| [`@cisstech/node-lens-request`](packages/request) | HTTP requests, timelines, and a request playground. | [![npm](https://img.shields.io/npm/v/@cisstech/node-lens-request.svg)](https://www.npmjs.com/package/@cisstech/node-lens-request) |
+| [`@cisstech/node-lens-database`](packages/database) | Database queries, N+1 detection, and a query playground. | [![npm](https://img.shields.io/npm/v/@cisstech/node-lens-database.svg)](https://www.npmjs.com/package/@cisstech/node-lens-database) |
+| [`@cisstech/node-lens-logging`](packages/logging) | Logs correlated to requests. | [![npm](https://img.shields.io/npm/v/@cisstech/node-lens-logging.svg)](https://www.npmjs.com/package/@cisstech/node-lens-logging) |
+| [`@cisstech/node-lens-introspection`](packages/introspection) | NestJS modules, providers, and routes (NestJS apps only). | [![npm](https://img.shields.io/npm/v/@cisstech/node-lens-introspection.svg)](https://www.npmjs.com/package/@cisstech/node-lens-introspection) |
 
 ## Writing a plugin
 
