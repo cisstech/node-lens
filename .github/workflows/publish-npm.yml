@@ -15,7 +15,7 @@ on:
           - current
 
 env:
-  NODE_VERSION: 22
+  NODE_VERSION: 22.12.0
 
 jobs:
   publish:
@@ -25,7 +25,10 @@ jobs:
       id-token: write # npm provenance via OIDC
       pull-requests: write # open the release PR back into main
     steps:
-      - uses: DerYeger/yarn-setup-action@master
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: ./.github/actions/setup
         with:
           node-version: ${{ env.NODE_VERSION }}
 
@@ -42,14 +45,15 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          tag=$(npm version ${{ inputs.version }} --no-git-tag-version)
+          npx standard-version --skip.commit --skip.tag --release-as ${{ inputs.version }}
+          tag="v$(node -p "require('./package.json').version")"
           echo "tag=${tag}" >> "$GITHUB_OUTPUT"
           git checkout -b "release/${tag}"
-          npx standard-version --skip.bump --skip.commit --skip.tag
           git add package.json CHANGELOG.md
           git commit -m "chore(release): ${tag}"
-          git tag "${tag}"
-          git push --follow-tags origin "release/${tag}"
+          git tag -a "${tag}" -m "${tag}"
+          git push origin "release/${tag}"
+          git push origin "${tag}"
           gh pr create --base main --head "release/${tag}" \
             --title "chore(release): ${tag}" \
             --body "Version bump and changelog for ${tag}. Safe to merge once the npm publish in this run has succeeded."
