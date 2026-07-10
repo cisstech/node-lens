@@ -56,8 +56,14 @@ vitest.config.*.timestamp*
 
 storybook-static
 
-# Yarn regenerates this on every install
-.yarn/install-state.gz
+# yarn (Berry, node-modules linker)
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/sdks
+!.yarn/versions
+.pnp.*
 
 # LICENSE copied into each package by scripts/publish.sh at publish time
 packages/*/LICENSE
