@@ -25,7 +25,7 @@ jobs:
       id-token: write # npm provenance via OIDC
       pull-requests: write # open the release PR back into main
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
         with:
           fetch-depth: 0
       - uses: ./.github/actions/setup
@@ -37,30 +37,20 @@ jobs:
           git config --global user.name "${{ github.actor }}"
           git config --global user.email "${{ github.actor }}@users.noreply.github.com"
 
-      # main is protected and the Actions bot cannot push to it, so the version
-      # bump lands on a release branch and returns to main through a pull request.
       - name: Version and changelog
         if: inputs.version != 'current'
         id: version
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           npx standard-version --skip.commit --skip.tag --release-as ${{ inputs.version }}
           tag="v$(node -p "require('./package.json').version")"
           echo "tag=${tag}" >> "$GITHUB_OUTPUT"
-          git checkout -b "release/${tag}"
-          git add package.json CHANGELOG.md
-          git commit -m "chore(release): ${tag}"
-          git tag -a "${tag}" -m "${tag}"
-          git push origin "release/${tag}"
-          git push origin "${tag}"
-          gh pr create --base main --head "release/${tag}" \
-            --title "chore(release): ${tag}" \
-            --body "Version bump and changelog for ${tag}. Safe to merge once the npm publish in this run has succeeded."
 
       - name: Build
         run: npx nx run-many -t build
 
+      # npm publish is the one step that is hard to undo, so it runs before the
+      # tag / branch / GitHub release / PR. If it fails, none of those are
+      # created and nothing points at a version that is not on npm.
       - name: Publish to npm
         run: |
           echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" > ~/.npmrc
@@ -68,8 +58,21 @@ jobs:
         env:
           NPM_TOKEN: ${{ secrets.NPM_PUBLIC_TOKEN }}
 
-      - name: GitHub release
-        if: inputs.version != 'current'
+      # main is protected and the Actions bot cannot push to it, so the version
+      # bump lands on a release branch and returns to main through a pull request.
+      - name: Tag, push and publish the GitHub release
+        if: success() && inputs.version != 'current'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: gh release create "${{ steps.version.outputs.tag }}" --title "${{ steps.version.outputs.tag }}" --generate-notes
+        run: |
+          tag="${{ steps.version.outputs.tag }}"
+          git checkout -b "release/${tag}"
+          git add package.json CHANGELOG.md
+          git commit -m "chore(release): ${tag}"
+          git tag -a "${tag}" -m "${tag}"
+          git push origin "release/${tag}"
+          git push origin "${tag}"
+          gh release create "${tag}" --title "${tag}" --generate-notes
+          gh pr create --base main --head "release/${tag}" \
+            --title "chore(release): ${tag}" \
+            --body "Version bump and changelog for ${tag}, already published to npm and released on GitHub in this run."
