@@ -1581,7 +1581,6 @@ __metadata:
     "@types/express": "npm:^5.0.3"
     "@types/fs-extra": "npm:^11"
     "@types/jest": "npm:^30.0.0"
-    "@types/js-yaml": "npm:^4"
     "@types/node": "npm:20.19.9"
     "@types/proper-lockfile": "npm:^4"
     "@vitest/ui": "npm:^3.0.0"
@@ -1601,7 +1600,6 @@ __metadata:
     jest-environment-node: "npm:^30.0.2"
     jest-util: "npm:^30.0.2"
     jiti: "npm:2.4.2"
-    js-yaml: "npm:^4.1.0"
     jsdom: "npm:~22.1.0"
     jsonc-eslint-parser: "npm:^2.1.0"
     lit: "npm:^3.3.1"
@@ -5999,13 +5997,6 @@ __metadata:
     expect: "npm:^30.0.0"
     pretty-format: "npm:^30.0.0"
   checksum: 10c0/20c6ce574154bc16f8dd6a97afacca4b8c4921a819496a3970382031c509ebe87a1b37b152a1b8475089b82d8ca951a9e95beb4b9bf78fbf579b1536f0b65969
-  languageName: node
-  linkType: hard
-
-"@types/js-yaml@npm:^4":
-  version: 4.0.9
-  resolution: "@types/js-yaml@npm:4.0.9"
-  checksum: 10c0/24de857aa8d61526bbfbbaa383aa538283ad17363fcd5bb5148e2c7f604547db36646440e739d78241ed008702a8920665d1add5618687b6743858fae00da211
   languageName: node
   linkType: hard
 
