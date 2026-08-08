@@ -55,7 +55,7 @@
     "jiti": "2.4.2",
     "jsdom": "~22.1.0",
     "jsonc-eslint-parser": "^2.1.0",
-    "nx": "21.5.2",
+    "nx": "22.7.7",
     "prettier": "^2.6.2",
     "standard-version": "^9.5.0",
     "storybook": "^9.0.5",
