@@ -22,14 +22,14 @@
   },
   "optionalDependencies": {
     "mongodb": "^6.0.0",
-    "mysql2": "^3.6.0",
+    "mysql2": "^3.23.1",
     "pg": "^8.11.0",
     "redis": "^4.6.0"
   },
   "peerDependencies": {
     "@cisstech/node-lens-server": "^0.1.0",
     "mongodb": "^6.0.0",
-    "mysql2": "^3.6.0",
+    "mysql2": "^3.23.1",
     "pg": "^8.11.0",
     "redis": "^4.6.0"
   },
