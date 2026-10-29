@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 # Publishes every non-private package to npm. Run after `nx run-many -t build`.
-# Assumes npm auth is configured (e.g. an ~/.npmrc with a token in CI).
+# In CI, npm authenticates through trusted publishing (OIDC); locally, run
+# `npm login` first.
 set -euo pipefail
 
 node ./scripts/sync-versions.mjs

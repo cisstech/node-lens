@@ -15,14 +15,15 @@ on:
           - current
 
 env:
-  NODE_VERSION: 22.12.0
+  # npm trusted publishing needs Node 22.14.0 or later.
+  NODE_VERSION: 22.23.4
 
 jobs:
   publish:
     runs-on: ubuntu-latest
     permissions:
       contents: write # push the release branch and create the GitHub release
-      id-token: write # npm provenance via OIDC
+      id-token: write # npm trusted publishing and provenance via OIDC
       pull-requests: write # open the release PR back into main
     steps:
       - uses: actions/checkout@v5
@@ -51,12 +52,14 @@ jobs:
       # npm publish is the one step that is hard to undo, so it runs before the
       # tag / branch / GitHub release / PR. If it fails, none of those are
       # created and nothing points at a version that is not on npm.
+      # It authenticates through npm trusted publishing (OIDC), not a token:
+      # every published package lists cisstech/node-lens and publish-npm.yml as
+      # its trusted publisher on npmjs.com. Node 22 bundles npm 10, and trusted
+      # publishing needs npm 11.5.1 or later.
       - name: Publish to npm
         run: |
-          echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" > ~/.npmrc
+          npm install -g npm@11.19.1
           ./scripts/publish.sh
-        env:
-          NPM_TOKEN: ${{ secrets.NPM_PUBLIC_TOKEN }}
 
       # main is protected and the Actions bot cannot push to it, so the version
       # bump lands on a release branch and returns to main through a pull request.
